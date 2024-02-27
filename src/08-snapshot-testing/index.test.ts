@@ -1,14 +1,39 @@
-// Uncomment the code below and write your tests
-// import { generateLinkedList } from './index';
+import { generateLinkedList } from './index';
+import { TIME_LIMIT } from 'utils/constants';
+
+const listItems = ['apple', 'banana', 'orange', 'grape'];
+
+const predefinedList = {
+  value: listItems[0],
+  next: {
+    value: listItems[1],
+    next: {
+      value: listItems[2],
+      next: {
+        value: listItems[3],
+        next: {
+          value: null,
+          next: null,
+        },
+      },
+    },
+  },
+};
 
 describe('generateLinkedList', () => {
-  // Check match by expect(...).toStrictEqual(...)
-  test('should generate linked list from values 1', () => {
-    // Write your test here
-  });
+  test(
+    'should generate linked list from values 1',
+    () => {
+      expect(generateLinkedList(listItems)).toStrictEqual(predefinedList);
+    },
+    TIME_LIMIT,
+  );
 
-  // Check match by comparison with snapshot
-  test('should generate linked list from values 2', () => {
-    // Write your test here
-  });
+  test(
+    'should generate linked list from values 2',
+    () => {
+      expect(generateLinkedList(listItems)).toMatchSnapshot();
+    },
+    TIME_LIMIT,
+  );
 });
